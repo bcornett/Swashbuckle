@@ -84,16 +84,11 @@ namespace Swashbuckle.Swagger
             var pathItem = new PathItem();
 
             // Group further by http method
-            var perMethodGrouping = apiDescriptions
-                .GroupBy(apiDesc => apiDesc.HttpMethod.Method.ToLower());
+            var perMethodGrouping = apiDescriptions;
 
-            foreach (var group in perMethodGrouping)
+            foreach (var apiDescription in perMethodGrouping)
             {
-                var httpMethod = group.Key;
-
-                var apiDescription = (group.Count() == 1)
-                    ? group.First()
-                    : _options.ConflictingActionsResolver(group);
+                var httpMethod = apiDescription.HttpMethod.Method.ToLower();
 
                 switch (httpMethod)
                 {

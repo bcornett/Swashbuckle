@@ -42,7 +42,7 @@ namespace Swashbuckle.Swagger.FromUriParams
                 var refSchema = schemaRegistry.GetOrRegister(type);
                 var schema = schemaRegistry.Definitions[refSchema.@ref.Replace("#/definitions/", "")];
 
-                var qualifier = string.IsNullOrEmpty(objectParam.name) ? "" : (objectParam.name + ".");
+                var qualifier = "";
                 ExtractAndAddQueryParams(schema, qualifier, objectParam.required, schemaRegistry, operation.parameters);
                 operation.parameters.Remove(objectParam);
             }
@@ -55,7 +55,7 @@ namespace Swashbuckle.Swagger.FromUriParams
             SchemaRegistry schemaRegistry,
             IList<Parameter> operationParams)
         {
-            foreach (var entry in sourceSchema.properties)
+            foreach (var entry in sourceSchema.properties.Where(x => x.Key != "id"))
             {
                 var propertySchema = entry.Value;
                 if (propertySchema.readOnly == true) continue;
@@ -68,7 +68,7 @@ namespace Swashbuckle.Swagger.FromUriParams
                     var schema = schemaRegistry.Definitions[propertySchema.@ref.Replace("#/definitions/", "")];
                     ExtractAndAddQueryParams(
                         schema,
-                        sourceQualifier + entry.Key.ToCamelCase() + ".",
+                        "",
                         required,
                         schemaRegistry,
                         operationParams);

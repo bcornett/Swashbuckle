@@ -12,9 +12,16 @@ namespace Swashbuckle.Dummy.Controllers
             throw new NotImplementedException();
         }
 
-        public IEnumerable<string> GetAllByKeyword(string keyword)
+        public IEnumerable<string> GetAllByKeyword(int id, [FromUri]MyObject t)
         {
             throw new NotImplementedException();
         }
+    }
+
+    public class MyObject
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
     }
 }
