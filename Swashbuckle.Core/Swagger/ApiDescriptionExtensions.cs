@@ -70,7 +70,8 @@ namespace Swashbuckle.Swagger
 
         public static bool IsSwaggerIgnore(this ApiDescription apiDescription)
         {
-            return apiDescription.ActionDescriptor.GetCustomAttributes<SwaggerIgnore>().Any();
+            return apiDescription.ActionDescriptor.GetCustomAttributes<SwaggerIgnore>().Any()
+                || apiDescription.ActionDescriptor.ControllerDescriptor.GetCustomAttributes<SwaggerIgnore>().Any();
         }
 
         public static IEnumerable<TAttribute> GetControllerAndActionAttributes<TAttribute>(this ApiDescription apiDesc)

@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Web.Http;
+using Swashbuckle.Swagger.Attributes;
 
 namespace Swashbuckle.Dummy.Controllers
 {
+    [SwaggerIgnore]
     public class ConflictingActionsController : ApiController
     {
         public IHttpActionResult GetAll([FromUri]MyObject t)
