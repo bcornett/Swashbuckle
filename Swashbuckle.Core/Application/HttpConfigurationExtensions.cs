@@ -12,7 +12,7 @@ namespace Swashbuckle.Application
 {
     public static class HttpConfigurationExtensions
     {
-        private static readonly string DefaultRouteTemplate = "swagger/docs/{apiVersion}";
+        private static readonly string DefaultRouteTemplate = "docs/{apiVersion}";
 
         public static SwaggerEnabledConfiguration EnableSwagger(
             this HttpConfiguration httpConfig,
@@ -55,7 +55,7 @@ namespace Swashbuckle.Application
 
     public class SwaggerEnabledConfiguration
     {
-        private static readonly string DefaultRouteTemplate = "swagger/ui/{*assetPath}";
+        private static readonly string DefaultRouteTemplate = "docs/ui/{*assetPath}";
 
         private readonly HttpConfiguration _httpConfig;
         private readonly Func<HttpRequestMessage, string> _rootUrlResolver;
@@ -95,10 +95,10 @@ namespace Swashbuckle.Application
             {
                 _httpConfig.Routes.MapHttpRoute(
                     name: "swagger_ui_shortcut",
-                    routeTemplate: "swagger",
+                    routeTemplate: "docs",
                     defaults: null,
                     constraints: new { uriResolution = new HttpRouteDirectionConstraint(HttpRouteDirection.UriResolution) },
-                    handler: new RedirectHandler(_rootUrlResolver, "swagger/ui/index"));
+                    handler: new RedirectHandler(_rootUrlResolver, "docs/ui/index"));
             }
         }
     }

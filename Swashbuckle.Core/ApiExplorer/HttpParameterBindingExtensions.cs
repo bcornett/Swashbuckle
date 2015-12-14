@@ -21,7 +21,7 @@ namespace Swashbuckle.ApiExplorer
             if (valueProviderParameterBinding != null)
             {
                 IEnumerable<ValueProviderFactory> valueProviderFactories = valueProviderParameterBinding.ValueProviderFactories;
-                if (valueProviderFactories.Any() && valueProviderFactories.All(factory => factory is IUriValueProviderFactory))
+                if (valueProviderFactories.Any() && valueProviderFactories.All(factory => factory.GetType().Name == "QueryStringValueProviderFactory" || factory.GetType().Name == "RouteDataValueProviderFactory"))
                 {
                     return true;
                 }

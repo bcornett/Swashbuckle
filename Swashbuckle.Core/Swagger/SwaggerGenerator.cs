@@ -44,18 +44,9 @@ namespace Swashbuckle.Swagger
             if (info == null)
                 throw new UnknownApiVersion(apiVersion);
 
-            var descriptions = GetApiDescriptionsFor(apiVersion)
+            var paths = GetApiDescriptionsFor(apiVersion)
                 .Where(apiDesc => !(_options.IgnoreObsoleteActions && apiDesc.IsObsolete()))
                 .OrderBy(_options.GroupingKeySelector, _options.GroupingKeyComparer)
-                .ToList();
-
-            for (int i = 0; i < descriptions.Count(); i++)
-            {
-                var path = descriptions[i].RelativePath;
-                descriptions[i].RelativePath = path + (descriptions.Take(i).Any(x => x.RelativePathSansQueryString() == descriptions[i].RelativePathSansQueryString()) ? " " : string.Empty);
-            }
-
-            var paths = descriptions
                 .GroupBy(apiDesc => apiDesc.RelativePathSansQueryString())
                 .ToDictionary(group => "/" + group.Key, group => CreatePathItem(group, schemaRegistry));
 

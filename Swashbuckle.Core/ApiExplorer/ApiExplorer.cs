@@ -529,7 +529,7 @@ namespace Swashbuckle.ApiExplorer
                                                         IEnumerable<PropertyInfo> properties,
                                                         string prefix)
         {
-            foreach (PropertyInfo property in properties)
+            foreach (PropertyInfo property in properties.Where(x => x.Name != "Id"))
             {
                 string queryParameterName = prefix + property.Name;
                 AddPlaceholder(parameterValuesForRoute, queryParameterName);
