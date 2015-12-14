@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Web.Http.Description;
+using Swashbuckle.ApiExplorer;
 
 namespace Swashbuckle.Swagger.Annotations
 {

@@ -1,7 +1,7 @@
-﻿using System.Web.Http.Description;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Http;
 using System.Collections.Generic;
+using Swashbuckle.ApiExplorer;
 using Swashbuckle.Swagger;
 
 namespace Swashbuckle.Dummy.SwaggerExtensions

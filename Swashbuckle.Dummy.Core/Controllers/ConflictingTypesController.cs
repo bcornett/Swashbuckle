@@ -12,6 +12,11 @@ namespace Swashbuckle.Dummy.Controllers
             throw new NotImplementedException();
         }
 
+        public IEnumerable<Responses.Blog> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Responses.Blog GetById(int id)
         {
             throw new NotImplementedException();

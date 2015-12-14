@@ -1,4 +1,4 @@
-﻿using System.Web.Http.Description;
+﻿using Swashbuckle.ApiExplorer;
 using Swashbuckle.Swagger;
 using System.Web.Http;
 

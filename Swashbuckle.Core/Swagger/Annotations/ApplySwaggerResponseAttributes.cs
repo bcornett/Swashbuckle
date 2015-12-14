@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web.Http.Description;
+using Swashbuckle.ApiExplorer;
 
 namespace Swashbuckle.Swagger.Annotations
 {

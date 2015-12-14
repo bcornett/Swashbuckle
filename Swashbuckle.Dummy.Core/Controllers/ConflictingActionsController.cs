@@ -7,12 +7,12 @@ namespace Swashbuckle.Dummy.Controllers
 {
     public class ConflictingActionsController : ApiController
     {
-        public IEnumerable<string> GetAll()
+        public IHttpActionResult GetAll([FromUri]MyObject t)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<string> GetAllByKeyword(int id, [FromUri]MyObject t)
+        public IHttpActionResult GetAllByKeyword(int id, [FromUri]MyObject t)
         {
             throw new NotImplementedException();
         }

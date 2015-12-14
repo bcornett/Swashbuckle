@@ -1,22 +1,22 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
-using System.Web.Http.Description;
 using System;
+using System.Web.Http.Description;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using System.Net.Http.Formatting;
+using ApiDescription = Swashbuckle.ApiExplorer.ApiDescription;
+using ApiParameterDescription = Swashbuckle.ApiExplorer.ApiParameterDescription;
 
 namespace Swashbuckle.Swagger
 {
     public class SwaggerGenerator : ISwaggerProvider
     {
-        private readonly IApiExplorer _apiExplorer;
+        private readonly ApiExplorer.ApiExplorer _apiExplorer;
         private readonly JsonSerializerSettings _jsonSerializerSettings;
         private readonly IDictionary<string, Info> _apiVersions;
         private readonly SwaggerGeneratorOptions _options;
 
         public SwaggerGenerator(
-            IApiExplorer apiExplorer,
+            ApiExplorer.ApiExplorer apiExplorer,
             JsonSerializerSettings jsonSerializerSettings,
             IDictionary<string, Info> apiVersions,
             SwaggerGeneratorOptions options = null)
@@ -44,9 +44,18 @@ namespace Swashbuckle.Swagger
             if (info == null)
                 throw new UnknownApiVersion(apiVersion);
 
-            var paths = GetApiDescriptionsFor(apiVersion)
+            var descriptions = GetApiDescriptionsFor(apiVersion)
                 .Where(apiDesc => !(_options.IgnoreObsoleteActions && apiDesc.IsObsolete()))
                 .OrderBy(_options.GroupingKeySelector, _options.GroupingKeyComparer)
+                .ToList();
+
+            for (int i = 0; i < descriptions.Count(); i++)
+            {
+                var path = descriptions[i].RelativePath;
+                descriptions[i].RelativePath = path + (descriptions.Take(i).Any(x => x.RelativePathSansQueryString() == descriptions[i].RelativePathSansQueryString()) ? " " : string.Empty);
+            }
+
+            var paths = descriptions
                 .GroupBy(apiDesc => apiDesc.RelativePathSansQueryString())
                 .ToDictionary(group => "/" + group.Key, group => CreatePathItem(group, schemaRegistry));
 

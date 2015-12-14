@@ -4,8 +4,8 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Description;
 using Newtonsoft.Json.Converters;
+using Swashbuckle.ApiExplorer;
 using Swashbuckle.Swagger;
 using Swashbuckle.Swagger.FromUriParams;
 using Swashbuckle.Swagger.Annotations;
@@ -237,7 +237,7 @@ namespace Swashbuckle.Application
             );
 
             var defaultProvider = new SwaggerGenerator(
-                httpConfig.Services.GetApiExplorer(),
+                new ApiExplorer.ApiExplorer(httpConfig), 
                 httpConfig.SerializerSettingsOrDefault(),
                 _versionInfoBuilder.Build(),
                 options);

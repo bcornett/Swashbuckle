@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using System.Web.Http.Description;
+using Swashbuckle.ApiExplorer;
 using Swashbuckle.Swagger;
 
 namespace Swashbuckle.Dummy.SwaggerExtensions

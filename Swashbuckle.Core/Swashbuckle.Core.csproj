@@ -51,20 +51,56 @@
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
       <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
       <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiExplorer\ApiDescription.cs" />
+    <Compile Include="ApiExplorer\ApiExplorer.cs" />
+    <Compile Include="ApiExplorer\ApiParameterDescription.cs" />
+    <Compile Include="ApiExplorer\AttributeDocumentationProvider.cs" />
+    <Compile Include="ApiExplorer\BoundRouteTemplate.cs" />
+    <Compile Include="ApiExplorer\CandidateAction.cs" />
+    <Compile Include="ApiExplorer\CollectionModelBinderUtil.cs" />
+    <Compile Include="ApiExplorer\CommonWebApiResources.cs" />
+    <Compile Include="ApiExplorer\Decorator.cs" />
+    <Compile Include="ApiExplorer\DictionaryExtensions.cs" />
+    <Compile Include="ApiExplorer\Error.cs" />
+    <Compile Include="ApiExplorer\HttpControllerDescriptorExtensions.cs" />
+    <Compile Include="ApiExplorer\HttpParameterBindingExtensions.cs" />
+    <Compile Include="ApiExplorer\HttpParsedRoute.cs" />
+    <Compile Include="ApiExplorer\HttpRouteExtensions.cs" />
+    <Compile Include="ApiExplorer\IDocumentationProvider.cs" />
+    <Compile Include="ApiExplorer\IUriValueProviderFactory.cs" />
+    <Compile Include="ApiExplorer\NetClasses.cs" />
+    <Compile Include="ApiExplorer\ParsedRoute.cs" />
+    <Compile Include="ApiExplorer\PathContentSegment.cs" />
+    <Compile Include="ApiExplorer\PathLiteralSubsegment.cs" />
+    <Compile Include="ApiExplorer\PathParameterSubsegment.cs" />
+    <Compile Include="ApiExplorer\PathSegment.cs" />
+    <Compile Include="ApiExplorer\PathSeparatorSegment.cs" />
+    <Compile Include="ApiExplorer\PathSubsegment.cs" />
+    <Compile Include="ApiExplorer\ResponseDescription.cs" />
+    <Compile Include="ApiExplorer\ResponseTypeAttribute.cs" />
+    <Compile Include="ApiExplorer\RouteDataTokenKeys.cs" />
+    <Compile Include="ApiExplorer\RouteParser.cs" />
+    <Compile Include="ApiExplorer\RouteValueKeys.cs" />
+    <Compile Include="ApiExplorer\RoutingContext.cs" />
+    <Compile Include="ApiExplorer\TypeHelper.cs" />
     <Compile Include="Application\HttpRouteDirectionConstraint.cs" />
     <Compile Include="Swagger\Annotations\ApplySwaggerOperationAttributes.cs" />
     <Compile Include="Swagger\Annotations\ApplySwaggerSchemaFilterAttributes.cs" />

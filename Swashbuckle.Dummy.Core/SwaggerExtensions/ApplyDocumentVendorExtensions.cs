@@ -1,11 +1,10 @@
-﻿using System.Web.Http.Description;
-using Swashbuckle.Swagger;
+﻿using Swashbuckle.Swagger;
 
 namespace Swashbuckle.Dummy.SwaggerExtensions
 {
     public class ApplyDocumentVendorExtensions : IDocumentFilter
     {
-        public void Apply(SwaggerDocument swaggerDoc, SchemaRegistry schemaRegistry, IApiExplorer apiExplorer)
+        public void Apply(SwaggerDocument swaggerDoc, SchemaRegistry schemaRegistry, ApiExplorer.ApiExplorer apiExplorer)
         {
             swaggerDoc.vendorExtensions.Add("x-document", "foo");
         }
