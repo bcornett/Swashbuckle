@@ -212,6 +212,7 @@ namespace Swashbuckle.Swagger
             var properties = jsonContract.Properties
                 .Where(p => !p.Ignored)
                 .Where(p => !(_ignoreObsoleteProperties && p.IsObsolete()))
+                .Where(p => !p.IsSwaggerIgnore())
                 .ToDictionary(
                     prop => prop.PropertyName,
                     prop => CreateInlineSchema(prop.PropertyType).WithValidationProperties(prop)

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using Swashbuckle.ApiExplorer;
+using Swashbuckle.Swagger.Attributes;
 
 namespace Swashbuckle.Swagger
 {
@@ -65,6 +66,11 @@ namespace Swashbuckle.Swagger
         public static bool IsObsolete(this ApiDescription apiDescription)
         {
             return apiDescription.ActionDescriptor.GetCustomAttributes<ObsoleteAttribute>().Any();
+        }
+
+        public static bool IsSwaggerIgnore(this ApiDescription apiDescription)
+        {
+            return apiDescription.ActionDescriptor.GetCustomAttributes<SwaggerIgnore>().Any();
         }
 
         public static IEnumerable<TAttribute> GetControllerAndActionAttributes<TAttribute>(this ApiDescription apiDesc)

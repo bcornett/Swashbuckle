@@ -348,6 +348,8 @@ namespace Swashbuckle.ApiExplorer
                 return;
             }
 
+            finalPath = finalPath.ToLower();
+
             // request formatters
             ApiParameterDescription bodyParameter = parameterDescriptions.FirstOrDefault(description => description.Source == ApiParameterSource.FromBody);
             IEnumerable<MediaTypeFormatter> supportedRequestBodyFormatters = bodyParameter != null ?

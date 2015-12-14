@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using Newtonsoft.Json.Serialization;
+using Swashbuckle.Swagger.Attributes;
 
 namespace Swashbuckle.Swagger
 {
@@ -15,6 +16,11 @@ namespace Swashbuckle.Swagger
         public static bool IsObsolete(this JsonProperty jsonProperty)
         {
             return jsonProperty.HasAttribute<ObsoleteAttribute>();
+        }
+
+        public static bool IsSwaggerIgnore(this JsonProperty jsonProperty)
+        {
+            return jsonProperty.HasAttribute<SwaggerIgnore>();
         }
 
         public static bool HasAttribute<T>(this JsonProperty jsonProperty)
